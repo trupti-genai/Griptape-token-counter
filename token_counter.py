@@ -32,7 +32,7 @@ class GriptapeAPITokenCounter:
                 "fetch_live_models": ("BOOLEAN", {"default": True})
             },
             "optional": {
-                "system_message": ("STRING", {"multiline": True, "default": "You are a helpful assistant."})
+                "system_message": ("STRING", {"multiline": True, "default": ""})
             }
         }
     
