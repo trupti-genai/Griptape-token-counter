@@ -137,24 +137,41 @@ class GriptapeAPITokenCounter:
             "estimated": True
         }
     
-    def build_conversation_messages(self, text: str, include_system_msg: bool,
-                                  system_message: str = "") -> List[Dict]:
-        """Build message array for API calls"""
-        messages = []
+    # def build_conversation_messages(self, text: str, include_system_msg: bool,
+    #                               system_message: str = "") -> List[Dict]:
+    #     """Build message array for API calls"""
+    #     messages = []
         
-        if include_system_msg and system_message.strip():
-            messages.append({
-                "role": "system", 
-                "content": system_message.strip()
-            })
+    #     if include_system_msg and system_message.strip():
+    #         messages.append({
+    #             "role": "system", 
+    #             "content": system_message.strip()
+    #         })
         
-        # Add current user message
-        messages.append({
-            "role": "user",
-            "content": text
-        })
+    #     # Add current user message
+    #     messages.append({
+    #         "role": "user",
+    #         "content": text
+    #     })
         
-        return messages
+    #     return messages
+    
+    def build_conversation_messages(self, text: str, system_message: str = "") -> List[Dict]:
+    messages = []
+    
+    if system_message.strip():
+        messages.append({"role": "system", "content": system_message.strip()})
+    
+    messages.append({"role": "user", "content": text})
+    return messages
+    def build_conversation_messages(self, text: str, system_message: str = "") -> List[Dict]:
+    messages = []
+    
+    if system_message.strip():
+        messages.append({"role": "system", "content": system_message.strip()})
+    
+    messages.append({"role": "user", "content": text})
+    return messages
     
     def make_token_counting_request(self, messages: List[Dict], model: str) -> Dict:
         """Make API request specifically for token counting"""
